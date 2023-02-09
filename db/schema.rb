@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(version: 2023_02_09_223516) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "actors_movies", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "movie_id", null: false
+    t.bigint "actor_id", null: false
+  end
+
   create_table "movies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "title", null: false
     t.integer "genre", null: false
