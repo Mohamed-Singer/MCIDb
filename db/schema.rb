@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_10_004536) do
+ActiveRecord::Schema.define(version: 2023_02_10_120327) do
 
   create_table "actors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 2023_02_10_004536) do
   create_table "actors_movies", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "movie_id", null: false
     t.bigint "actor_id", null: false
+  end
+
+  create_table "award_wins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "year_won", null: false
+    t.string "winner_type"
+    t.bigint "winner_id"
+    t.bigint "award_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["award_id"], name: "index_award_wins_on_award_id"
+    t.index ["winner_type", "winner_id"], name: "index_award_wins_on_winner_type_and_winner_id"
   end
 
   create_table "awards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -65,4 +76,5 @@ ActiveRecord::Schema.define(version: 2023_02_10_004536) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "award_wins", "awards"
 end
