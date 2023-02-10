@@ -4,5 +4,6 @@ class AwardWin < ApplicationRecord
   belongs_to :award
 
   # validations
-  validates :year_won, presence: true, length: { maximum: 4 }, uniqueness: { scope: %i(winner_id award_id) }
+  validates :year_won, presence: true, length: { is: 4 }, numericality: { only_integer: true },
+                       uniqueness: { scope: %i(winner_id award_id) }
 end
