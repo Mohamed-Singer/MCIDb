@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_09_225452) do
+ActiveRecord::Schema.define(version: 2023_02_09_231652) do
 
   create_table "actors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2023_02_09_225452) do
     t.boolean "featured", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "director_id"
+    t.index ["director_id"], name: "index_movies_on_director_id"
   end
 
 end
