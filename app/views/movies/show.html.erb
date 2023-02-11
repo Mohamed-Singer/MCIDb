@@ -1,3 +1,4 @@
+<%= link_to 'Back', movies_path %>
 <p>
   <strong>Title:</strong>
   <%= @movie.title %>
@@ -27,3 +28,31 @@
   <strong>Actors:</strong>
   <%= @movie.actors.pluck(:name) %>
 </p>
+
+<h2>Reviews</h2>
+<% @movie.reviews.each do |r| %>
+  <p>
+    <strong>Rating:</strong>
+    <%= r.rating %>/10
+  </p>
+ 
+  <p>
+    <strong>review:</strong>
+    <%= r.content %>
+  </p>
+<% end %>
+
+<h2>Add a review:</h2>
+<%= form_with(model: [ @movie, @movie.reviews.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :rating %><br>
+    <%= form.number_field :rating %>
+  </p>
+  <p>
+    <%= form.label :content %><br>
+    <%= form.text_area :content %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  resources :movies, only: %i(show index)
+  resources :movies, only: %i(show index) do
+    resources :reviews
+  end
+
   get '/featuredMovies', to: 'movies#featured'
   get '/openingWeek', to: 'movies#opening_week'
 
