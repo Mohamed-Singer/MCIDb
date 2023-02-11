@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_11_140807) do
+ActiveRecord::Schema.define(version: 2023_02_11_150924) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "namespace"
@@ -97,12 +97,12 @@ ActiveRecord::Schema.define(version: 2023_02_11_140807) do
   end
 
   create_table "news_pieces", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.bigint "author_id", null: false
+    t.bigint "admin_user_id", null: false
     t.string "title", null: false
     t.text "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["author_id"], name: "index_news_pieces_on_author_id"
+    t.index ["admin_user_id"], name: "index_news_pieces_on_admin_user_id"
   end
 
   create_table "ratings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -121,4 +121,5 @@ ActiveRecord::Schema.define(version: 2023_02_11_140807) do
   end
 
   add_foreign_key "award_wins", "awards"
+  add_foreign_key "news_pieces", "admin_users"
 end
