@@ -7,5 +7,5 @@ class Movie < ApplicationRecord
 
   # validations
   validates :title, presence: true, length: { maximum: 250 }
-  validates :release_date, :featured, presence: true
+  validates :release_date, presence: true
 end
