@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/featuredMovies', to: 'movies#featured'
   get '/openingWeek', to: 'movies#opening_week'
 
+  resources :news_pieces, only: %i(show index)
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -1,0 +1,24 @@
+<h1>News</h1>
+<%= form_tag '/news_pieces', method: 'get' do %>
+  <%= label_tag(:search, "Search:") %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag("search", name: nil) %>
+<% end %>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Published at</th>
+    <th></th>
+  </tr>
+ 
+  <% @news.each do |n| %>
+    <tr>
+      <td><%= n.title %></td>
+      <td><%= n.content %></td>
+      <td><%= n.created_at %></td>
+      <td><%= link_to 'Open', news_piece_path(n) %></td>
+    </tr>
+  <% end %>
+</table>

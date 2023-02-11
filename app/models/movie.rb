@@ -11,7 +11,7 @@ class Movie < ApplicationRecord
   validates :release_date, presence: true
 
   def self.search(args)
-    return Movie.all unless args.present?
+    return all unless args.present?
 
     genre = Genre.find_by(name: args[:genre])
 
