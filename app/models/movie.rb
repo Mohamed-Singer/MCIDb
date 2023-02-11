@@ -5,6 +5,7 @@ class Movie < ApplicationRecord
   belongs_to :genre
   belongs_to :rating
   has_many :award_wins, as: :winner, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   # validations
   validates :title, presence: true, length: { maximum: 250 }
