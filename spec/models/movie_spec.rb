@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Movie, type: :model do
   it { should have_and_belong_to_many(:actors) }
+  it { should have_many(:award_wins) }
   it { should belong_to(:director) }
   it { should belong_to(:genre) }
   it { should belong_to(:rating) }
