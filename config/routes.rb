@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :movies, only: %i(show index)
   get '/featuredMovies', to: 'movies#featured'
+  get '/openingWeek', to: 'movies#opening_week'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
