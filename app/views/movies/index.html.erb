@@ -1,4 +1,10 @@
 <h1>Movies Database</h1>
+<%= form_tag '/movies', method: 'get' do %>
+  <%= label_tag(:title, "Filter:") %>
+  <%= text_field_tag :title, params[:title] %>
+  <%= select_tag :genre, options_for_select(Genre.pluck(:name), params[:genre]), include_blank: true %>
+  <%= submit_tag("filter", name: nil) %>
+<% end %>
  
 <table>
   <tr>

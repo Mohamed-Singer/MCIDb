@@ -9,4 +9,15 @@ class Movie < ApplicationRecord
   # validations
   validates :title, presence: true, length: { maximum: 250 }
   validates :release_date, presence: true
+
+  def self.search(args)
+    return Movie.all unless args.present?
+
+    genre = Genre.find_by(name: args[:genre])
+
+    return where('lower(title) LIKE ?', "%#{args[:title]}%") unless genre.present?
+    return where('genre_id = ?', genre&.id)                  unless args[:title].present?
+
+    where('lower(title) like ? AND genre_id = ?', "%#{args[:title]}%", genre&.id)
+  end
 end
