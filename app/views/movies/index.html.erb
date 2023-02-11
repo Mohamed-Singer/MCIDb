@@ -1,0 +1,23 @@
+<h1>Movies</h1>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Genre</th>
+    <th>Rating</th>
+    <th>Director</th>
+    <th>Actors</th>
+    <th></th>
+  </tr>
+ 
+  <% @movies.each do |movie| %>
+    <tr>
+      <td><%= movie.title %></td>
+      <td><%= movie.genre&.name %></td>
+      <td><%= movie.rating&.name %></td>
+      <td><%= movie.director&.name %></td>
+      <td><%= movie.actors.pluck(:name) %></td>
+      <td><%= link_to 'Open', movie_path(movie) %></td>
+    </tr>
+  <% end %>
+</table>
