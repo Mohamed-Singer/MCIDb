@@ -3,3 +3,5 @@
 <p><%= link_to 'Featured Movies', controller: 'movies', action: 'featured' %></p>
 <p><%= link_to 'Movies opening this week', controller: 'movies', action: 'opening_week' %></p>
 <p><%= link_to 'Movies Database', controller: 'movies' %></p>
+
+<%= link_to "Register/Login with Facebook", user_facebook_omniauth_authorize_path, method: :post %>
